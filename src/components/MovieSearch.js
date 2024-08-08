@@ -1,7 +1,7 @@
 // src/components/MovieSearch.js
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovie, fetchSuggestions, addMovie } from '../redux/actions/movieActions';
+import { fetchMovie, fetchSuggestions, addMovie } from '../redux/actions/movieActions'; // Import addMovie
 import SuggestionList from './SuggestionList';
 
 const MovieSearch = () => {
@@ -21,11 +21,8 @@ const MovieSearch = () => {
         }
     };
 
-    const handleAddMovie = () => {
-        if (searchTerm) {
-            dispatch(fetchMovie(searchTerm)); // Fetch movie details
-            setSearchTerm(''); // Clear search term
-        }
+    const handleAddMovie = (movie) => {
+        dispatch(addMovie(movie)); // Add movie directly
     };
 
     return (
@@ -41,14 +38,14 @@ const MovieSearch = () => {
                 <div className="input-group-append">
                     <button
                         className="btn btn-primary"
-                        onClick={handleAddMovie}
+                        onClick={() => dispatch(fetchMovie(searchTerm))} // Fetch movie details on button click
                     >
                         Search
                     </button>
                 </div>
             </div>
             {error && <div className="alert alert-danger mt-3">{error}</div>}
-            {searchTerm.length > 0 && <SuggestionList suggestions={suggestions} />}
+            {searchTerm.length > 0 && <SuggestionList suggestions={suggestions} onAddMovie={handleAddMovie} />}
         </div>
     );
 };
