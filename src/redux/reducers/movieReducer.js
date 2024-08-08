@@ -1,9 +1,9 @@
 // src/redux/reducers/movieReducer.js
-import { ADD_MOVIE, REMOVE_MOVIE, FETCH_MOVIE_SUCCESS, FETCH_MOVIE_FAILURE } from '../types';
+import { ADD_MOVIE, REMOVE_MOVIE, FETCH_MOVIE_SUCCESS, FETCH_MOVIE_FAILURE, FETCH_SUGGESTIONS_SUCCESS, FETCH_SUGGESTIONS_FAILURE } from '../types';
 
 const initialState = {
     movies: [],
-    movie: null,
+    suggestions: [],
     error: null
 };
 
@@ -22,10 +22,19 @@ const movieReducer = (state = initialState, action) => {
         case FETCH_MOVIE_SUCCESS:
             return {
                 ...state,
-                movie: action.payload,
-                error: null
+                movies: [...state.movies, action.payload]
             };
         case FETCH_MOVIE_FAILURE:
+            return {
+                ...state,
+                error: action.payload
+            };
+        case FETCH_SUGGESTIONS_SUCCESS:
+            return {
+                ...state,
+                suggestions: action.payload
+            };
+        case FETCH_SUGGESTIONS_FAILURE:
             return {
                 ...state,
                 error: action.payload
