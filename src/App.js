@@ -1,8 +1,9 @@
 // src/App.js
+import './App.css';
 import React from 'react';
 import MovieSearch from './components/MovieSearch';
 import MovieList from './components/MovieList';
-
+import ShareButton from './components/ShareButton';
 const App = () => {
     return (
         <div className="App">
@@ -11,6 +12,7 @@ const App = () => {
             </header>
             <MovieSearch />
             <MovieList />
+            <ShareButton list={movies}/>
         </div>
     );
 };
