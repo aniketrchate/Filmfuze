@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { ADD_MOVIE, REMOVE_MOVIE, FETCH_MOVIE_SUCCESS, FETCH_MOVIE_FAILURE } from '../types';
 
-const API_KEY = 'your_omdb_api_key'; // Replace with your OMDB API key
+const API_KEY = 'https://www.omdbapi.com/?t=${movie}&apikey=eb9227a5'; // Replace with your OMDB API key
 
 export const addMovie = (movie) => ({
     type: ADD_MOVIE,
