@@ -1,51 +1,45 @@
 // src/components/MovieSearch.js
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovie, fetchSuggestions, addMovie } from '../redux/actions/movieActions'; // Import addMovie
-import SuggestionList from './SuggestionList';
+import { fetchSuggestions, addMovie } from '../redux/actions/movieActions';
 
 const MovieSearch = () => {
-    const [searchTerm, setSearchTerm] = useState('');
+    const [query, setQuery] = useState('');
     const dispatch = useDispatch();
     const suggestions = useSelector(state => state.suggestions);
-    const error = useSelector(state => state.error);
 
-    const handleSearchChange = (event) => {
-        const value = event.target.value;
-        setSearchTerm(value);
-
-        if (value.length > 0) {
-            dispatch(fetchSuggestions(value));
-        } else {
-            dispatch(fetchSuggestions('')); // Clear suggestions if search term is empty
-        }
+    const handleSearch = () => {
+        dispatch(fetchSuggestions(query));
     };
 
     const handleAddMovie = (movie) => {
-        dispatch(addMovie(movie)); // Add movie directly
+        dispatch(addMovie(movie));
+        setQuery('');
     };
 
     return (
         <div className="container mt-4">
-            <div className="input-group">
+            <h2>Search for Movies</h2>
+            <div className="form-group">
                 <input
                     type="text"
                     className="form-control"
-                    placeholder="Search for a movie"
-                    value={searchTerm}
-                    onChange={handleSearchChange}
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Search for movies"
                 />
-                <div className="input-group-append">
-                    <button
-                        className="btn btn-primary"
-                        onClick={() => dispatch(fetchMovie(searchTerm))} // Fetch movie details on button click
-                    >
-                        Search
-                    </button>
-                </div>
+                <button className="btn btn-primary mt-2" onClick={handleSearch}>Search</button>
             </div>
-            {error && <div className="alert alert-danger mt-3">{error}</div>}
-            {searchTerm.length > 0 && <SuggestionList suggestions={suggestions} onAddMovie={handleAddMovie} />}
+            {suggestions.length > 0 && (
+                <ul className="list-group">
+                    {suggestions.map(movie => (
+                        <li key={movie.imdbID} className="list-group-item d-flex justify-content-between align-items-center">
+                            {movie.Title} ({movie.Year})
+                            <button className="btn btn-success" onClick={() => handleAddMovie(movie)}>Add</button>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };

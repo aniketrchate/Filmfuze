@@ -2,29 +2,32 @@
 import { ADD_MOVIE, REMOVE_MOVIE, FETCH_MOVIE_SUCCESS, FETCH_MOVIE_FAILURE, FETCH_SUGGESTIONS_SUCCESS, FETCH_SUGGESTIONS_FAILURE } from '../types';
 
 const initialState = {
-    movies: [],
-    suggestions: [],
-    selectedMovie: null,
-    error: null
+    movies: JSON.parse(localStorage.getItem('movies')) || [],
+    error: null,
+    suggestions: []
 };
 
 const movieReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MOVIE:
+            const updatedMoviesAdd = [...state.movies, action.payload];
+            localStorage.setItem('movies', JSON.stringify(updatedMoviesAdd));
             return {
                 ...state,
-                movies: [...state.movies, action.payload]
+                movies: updatedMoviesAdd
             };
         case REMOVE_MOVIE:
+            const updatedMoviesRemove = state.movies.filter(movie => movie.imdbID !== action.payload);
+            localStorage.setItem('movies', JSON.stringify(updatedMoviesRemove));
             return {
                 ...state,
-                movies: state.movies.filter(movie => movie.imdbID !== action.payload)
+                movies: updatedMoviesRemove
             };
         case FETCH_MOVIE_SUCCESS:
             return {
                 ...state,
-                movies: state.movies.map(movie => movie.imdbID === action.payload.imdbID ? { ...movie, isSelected: true } : movie),
-                selectedMovie: action.payload
+                movie: action.payload,
+                error: null
             };
         case FETCH_MOVIE_FAILURE:
             return {
@@ -34,11 +37,13 @@ const movieReducer = (state = initialState, action) => {
         case FETCH_SUGGESTIONS_SUCCESS:
             return {
                 ...state,
-                suggestions: action.payload
+                suggestions: action.payload,
+                error: null
             };
         case FETCH_SUGGESTIONS_FAILURE:
             return {
                 ...state,
+                suggestions: [],
                 error: action.payload
             };
         default:

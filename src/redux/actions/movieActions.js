@@ -16,7 +16,7 @@ export const removeMovie = (id) => ({
 
 export const fetchMovie = (title) => async (dispatch) => {
     try {
-        const response = await axios.get(`https://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=${API_KEY}`);
+        const response = await axios.get(`https://www.omdbapi.com/?t=${title}&apikey=${API_KEY}`);
         dispatch({
             type: FETCH_MOVIE_SUCCESS,
             payload: response.data
@@ -31,10 +31,10 @@ export const fetchMovie = (title) => async (dispatch) => {
 
 export const fetchSuggestions = (query) => async (dispatch) => {
     try {
-        const response = await axios.get(`https://www.omdbapi.com/?s=${encodeURIComponent(query)}&apikey=${API_KEY}`);
+        const response = await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
         dispatch({
             type: FETCH_SUGGESTIONS_SUCCESS,
-            payload: response.data.Search || []
+            payload: response.data.Search
         });
     } catch (error) {
         dispatch({
