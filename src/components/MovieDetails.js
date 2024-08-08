@@ -6,7 +6,7 @@ import { fetchMovie } from '../redux/actions/movieActions';
 const MovieDetails = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const navigate = useNavigate(); // Use navigate instead of history
+    const navigate = useNavigate();
     const selectedMovie = useSelector(state => state.selectedMovie);
 
     useEffect(() => {
@@ -29,10 +29,10 @@ const MovieDetails = () => {
             <h2>{selectedMovie.Title} ({selectedMovie.Year})</h2>
             <div className="row">
                 <div className="col-md-4">
-                    <img src={selectedMovie.Poster} alt={selectedMovie.Title} className="img-fluid" />
+                    <img src={selectedMovie.Poster} alt={selectedMovie.Title} className="img-fluid mb-3 rounded" />
                 </div>
                 <div className="col-md-8">
-                <div className="details">
+                    <div className="details">
                         <p><strong>Genre:</strong> {selectedMovie.Genre}</p>
                         <p><strong>Director:</strong> {selectedMovie.Director}</p>
                         <p><strong>Plot:</strong> {selectedMovie.Plot}</p>
