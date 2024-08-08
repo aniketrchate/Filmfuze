@@ -1,7 +1,6 @@
-// src/components/MovieSearch.js
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSuggestions, addMovie } from '../redux/actions/movieActions';
+import { fetchSuggestions, fetchMovie, addMovie } from '../redux/actions/movieActions';
 
 const MovieSearch = () => {
     const [query, setQuery] = useState('');
@@ -19,7 +18,8 @@ const MovieSearch = () => {
     };
 
     const handleAddMovie = (movie) => {
-        dispatch(addMovie(movie));
+        dispatch(fetchMovie(movie.Title)); // Fetch full movie details
+        dispatch(addMovie(movie)); // Add movie to list
         dispatch({ type: 'FETCH_SUGGESTIONS_SUCCESS', payload: [] }); // Clear suggestions after adding
         setQuery(''); // Clear the input after adding
     };

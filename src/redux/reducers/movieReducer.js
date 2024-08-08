@@ -1,4 +1,3 @@
-// src/redux/reducers/movieReducer.js
 import { 
     ADD_MOVIE, 
     REMOVE_MOVIE, 
@@ -9,8 +8,19 @@ import {
     SELECT_MOVIE 
 } from '../types';
 
+// Load movies from local storage or initialize with an empty array if none exist
+const loadMoviesFromLocalStorage = () => {
+    try {
+        const savedMovies = localStorage.getItem('movies');
+        return savedMovies ? JSON.parse(savedMovies) : [];
+    } catch (error) {
+        console.error('Failed to load movies from local storage', error);
+        return [];
+    }
+};
+
 const initialState = {
-    movies: [],
+    movies: loadMoviesFromLocalStorage(),
     suggestions: [],
     selectedMovie: null,
     error: null
@@ -19,14 +29,18 @@ const initialState = {
 const movieReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MOVIE:
+            const updatedMoviesAdd = [...state.movies, action.payload];
+            localStorage.setItem('movies', JSON.stringify(updatedMoviesAdd));
             return {
                 ...state,
-                movies: [...state.movies, action.payload]
+                movies: updatedMoviesAdd
             };
         case REMOVE_MOVIE:
+            const updatedMoviesRemove = state.movies.filter(movie => movie.imdbID !== action.payload);
+            localStorage.setItem('movies', JSON.stringify(updatedMoviesRemove));
             return {
                 ...state,
-                movies: state.movies.filter(movie => movie.imdbID !== action.payload)
+                movies: updatedMoviesRemove
             };
         case FETCH_MOVIE_SUCCESS:
             return {
