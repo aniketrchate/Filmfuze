@@ -1,39 +1,28 @@
 // src/components/SuggestionList.js
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchMovie } from '../redux/actions/movieActions';
 
-const SuggestionList = ({ suggestions }) => {
-    const dispatch = useDispatch();
-
-    const handleSelect = (title) => {
-        dispatch(fetchMovie(title));
-    };
-
+const SuggestionList = ({ suggestions, onAddMovie }) => {
     return (
-        <ul className="list-group mt-2">
-            {suggestions.map(movie => (
-                <li
-                    key={movie.imdbID}
-                    className="list-group-item d-flex justify-content-between align-items-center"
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => handleSelect(movie.Title)}
-                >
-                    <div>
-                        {movie.Title} ({movie.Year})
-                    </div>
-                    <button
-                        className="btn btn-info btn-sm"
-                        onClick={(e) => {
-                            e.stopPropagation(); // Prevent triggering the li's onClick
-                            handleSelect(movie.Title);
-                        }}
+        <div className="suggestion-list mt-3">
+            <ul className="list-group">
+                {suggestions.map(movie => (
+                    <li
+                        key={movie.imdbID}
+                        className="list-group-item d-flex justify-content-between align-items-center"
                     >
-                        View Details
-                    </button>
-                </li>
-            ))}
-        </ul>
+                        <div>
+                            <strong>{movie.Title}</strong> ({movie.Year})
+                        </div>
+                        <button
+                            className="btn btn-primary btn-sm"
+                            onClick={() => onAddMovie(movie)}
+                        >
+                            Add
+                        </button>
+                    </li>
+                ))}
+            </ul>
+        </div>
     );
 };
 
