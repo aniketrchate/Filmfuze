@@ -1,9 +1,19 @@
 // src/components/MovieDetails.js
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchMovie } from '../redux/actions/movieActions';
 
 const MovieDetails = () => {
+    const { id } = useParams();
+    const dispatch = useDispatch();
     const selectedMovie = useSelector(state => state.selectedMovie);
+
+    useEffect(() => {
+        if (id) {
+            dispatch(fetchMovie(id));
+        }
+    }, [id, dispatch]);
 
     if (!selectedMovie) {
         return <div className="container mt-4">No movie selected</div>;

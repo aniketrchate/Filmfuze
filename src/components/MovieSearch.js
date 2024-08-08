@@ -6,38 +6,48 @@ import { fetchSuggestions, addMovie } from '../redux/actions/movieActions';
 const MovieSearch = () => {
     const [query, setQuery] = useState('');
     const dispatch = useDispatch();
-    const suggestions = useSelector(state => state.suggestions); // Correctly access the suggestions
+    const suggestions = useSelector(state => state.suggestions);
 
-    const handleSearch = () => {
-        if (query.trim()) {
-            dispatch(fetchSuggestions(query));
+    const handleChange = (event) => {
+        const value = event.target.value;
+        setQuery(value);
+        if (value) {
+            dispatch(fetchSuggestions(value));
+        } else {
+            dispatch({ type: 'FETCH_SUGGESTIONS_SUCCESS', payload: [] }); // Clear suggestions if query is empty
         }
     };
 
     const handleAddMovie = (movie) => {
         dispatch(addMovie(movie));
-        setQuery('');
+        dispatch({ type: 'FETCH_SUGGESTIONS_SUCCESS', payload: [] }); // Clear suggestions after adding
+        setQuery(''); // Clear the input after adding
     };
 
     return (
         <div className="container mt-4">
-            <h2>Search for Movies</h2>
-            <div className="form-group">
-                <input
-                    type="text"
-                    className="form-control"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Search for movies"
-                />
-                <button className="btn btn-primary mt-2" onClick={handleSearch}>Search</button>
-            </div>
+            <input
+                type="text"
+                value={query}
+                onChange={handleChange}
+                className="form-control"
+                placeholder="Search for movies..."
+            />
             {suggestions && suggestions.length > 0 && (
-                <ul className="list-group">
-                    {suggestions.map(movie => (
+                <ul className="list-group mt-2">
+                    {suggestions.map((movie) => (
                         <li key={movie.imdbID} className="list-group-item d-flex justify-content-between align-items-center">
-                            {movie.Title} ({movie.Year})
-                            <button className="btn btn-success" onClick={() => handleAddMovie(movie)}>Add</button>
+                            <div>
+                                <strong>{movie.Title}</strong> ({movie.Year})
+                            </div>
+                            <div>
+                                <button
+                                    className="btn btn-primary btn-sm"
+                                    onClick={() => handleAddMovie(movie)}
+                                >
+                                    Add to List
+                                </button>
+                            </div>
                         </li>
                     ))}
                 </ul>

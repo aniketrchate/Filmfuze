@@ -1,33 +1,37 @@
 // src/redux/reducers/movieReducer.js
-import { ADD_MOVIE, REMOVE_MOVIE, FETCH_MOVIE_SUCCESS, FETCH_MOVIE_FAILURE, FETCH_SUGGESTIONS_SUCCESS, FETCH_SUGGESTIONS_FAILURE } from '../types';
+import { 
+    ADD_MOVIE, 
+    REMOVE_MOVIE, 
+    FETCH_MOVIE_SUCCESS, 
+    FETCH_MOVIE_FAILURE, 
+    FETCH_SUGGESTIONS_SUCCESS, 
+    FETCH_SUGGESTIONS_FAILURE, 
+    SELECT_MOVIE 
+} from '../types';
 
 const initialState = {
-    movies: JSON.parse(localStorage.getItem('movies')) || [],
-    error: null,
-    suggestions: []  // Ensure this is initialized as an empty array
+    movies: [],
+    suggestions: [],
+    selectedMovie: null,
+    error: null
 };
 
 const movieReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MOVIE:
-            const updatedMoviesAdd = [...state.movies, action.payload];
-            localStorage.setItem('movies', JSON.stringify(updatedMoviesAdd));
             return {
                 ...state,
-                movies: updatedMoviesAdd
+                movies: [...state.movies, action.payload]
             };
         case REMOVE_MOVIE:
-            const updatedMoviesRemove = state.movies.filter(movie => movie.imdbID !== action.payload);
-            localStorage.setItem('movies', JSON.stringify(updatedMoviesRemove));
             return {
                 ...state,
-                movies: updatedMoviesRemove
+                movies: state.movies.filter(movie => movie.imdbID !== action.payload)
             };
         case FETCH_MOVIE_SUCCESS:
             return {
                 ...state,
-                movie: action.payload,
-                error: null
+                selectedMovie: action.payload
             };
         case FETCH_MOVIE_FAILURE:
             return {
@@ -37,14 +41,17 @@ const movieReducer = (state = initialState, action) => {
         case FETCH_SUGGESTIONS_SUCCESS:
             return {
                 ...state,
-                suggestions: action.payload,
-                error: null
+                suggestions: action.payload
             };
         case FETCH_SUGGESTIONS_FAILURE:
             return {
                 ...state,
-                suggestions: [],
                 error: action.payload
+            };
+        case SELECT_MOVIE:
+            return {
+                ...state,
+                selectedMovie: action.payload
             };
         default:
             return state;

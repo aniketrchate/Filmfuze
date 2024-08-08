@@ -1,8 +1,16 @@
 // src/redux/actions/movieActions.js
 import axios from 'axios';
-import { ADD_MOVIE, REMOVE_MOVIE, FETCH_MOVIE_SUCCESS, FETCH_MOVIE_FAILURE, FETCH_SUGGESTIONS_SUCCESS, FETCH_SUGGESTIONS_FAILURE } from '../types';
+import { 
+    ADD_MOVIE, 
+    REMOVE_MOVIE, 
+    FETCH_MOVIE_SUCCESS, 
+    FETCH_MOVIE_FAILURE, 
+    FETCH_SUGGESTIONS_SUCCESS, 
+    FETCH_SUGGESTIONS_FAILURE, 
+    SELECT_MOVIE 
+} from '../types';
 
-const API_KEY = '77e104e1'; // Replace with your OMDB API key
+const API_KEY = '77e104e1'; // Replace with your actual API key
 
 export const addMovie = (movie) => ({
     type: ADD_MOVIE,
@@ -34,7 +42,7 @@ export const fetchSuggestions = (query) => async (dispatch) => {
         const response = await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
         dispatch({
             type: FETCH_SUGGESTIONS_SUCCESS,
-            payload: response.data.Search || []  // Ensure response.data.Search is used
+            payload: response.data.Search || [] // Ensure it's an array
         });
     } catch (error) {
         dispatch({
@@ -43,3 +51,8 @@ export const fetchSuggestions = (query) => async (dispatch) => {
         });
     }
 };
+
+export const selectMovie = (movie) => ({
+    type: SELECT_MOVIE,
+    payload: movie
+});
