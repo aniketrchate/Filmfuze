@@ -4,6 +4,7 @@ import { ADD_MOVIE, REMOVE_MOVIE, FETCH_MOVIE_SUCCESS, FETCH_MOVIE_FAILURE, FETC
 const initialState = {
     movies: [],
     suggestions: [],
+    selectedMovie: null,
     error: null
 };
 
@@ -22,7 +23,8 @@ const movieReducer = (state = initialState, action) => {
         case FETCH_MOVIE_SUCCESS:
             return {
                 ...state,
-                movies: [...state.movies, action.payload]
+                movies: state.movies.map(movie => movie.imdbID === action.payload.imdbID ? { ...movie, isSelected: true } : movie),
+                selectedMovie: action.payload
             };
         case FETCH_MOVIE_FAILURE:
             return {

@@ -15,10 +15,22 @@ const SuggestionList = ({ suggestions }) => {
             {suggestions.map(movie => (
                 <li
                     key={movie.imdbID}
-                    className="list-group-item"
+                    className="list-group-item d-flex justify-content-between align-items-center"
+                    style={{ cursor: 'pointer' }}
                     onClick={() => handleSelect(movie.Title)}
                 >
-                    {movie.Title} ({movie.Year})
+                    <div>
+                        {movie.Title} ({movie.Year})
+                    </div>
+                    <button
+                        className="btn btn-info btn-sm"
+                        onClick={(e) => {
+                            e.stopPropagation(); // Prevent triggering the li's onClick
+                            handleSelect(movie.Title);
+                        }}
+                    >
+                        View Details
+                    </button>
                 </li>
             ))}
         </ul>

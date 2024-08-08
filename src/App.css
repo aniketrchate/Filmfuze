@@ -44,6 +44,16 @@
   border-color: #dc3545;
 }
 
+.list-group-item {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.list-group-item:hover {
+  background-color: #e9ecef; 
+  color: #007bff; 
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

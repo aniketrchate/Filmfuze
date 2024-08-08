@@ -1,27 +1,30 @@
 // src/components/MovieSearch.js
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMovie, fetchSuggestions } from '../redux/actions/movieActions';
+import { fetchMovie, fetchSuggestions, addMovie } from '../redux/actions/movieActions';
 import SuggestionList from './SuggestionList';
 
 const MovieSearch = () => {
-    const [title, setTitle] = useState('');
+    const [searchTerm, setSearchTerm] = useState('');
     const dispatch = useDispatch();
     const suggestions = useSelector(state => state.suggestions);
+    const error = useSelector(state => state.error);
 
-    const handleSearch = () => {
-        if (title) {
-            dispatch(fetchMovie(title));
+    const handleSearchChange = (event) => {
+        const value = event.target.value;
+        setSearchTerm(value);
+
+        if (value.length > 0) {
+            dispatch(fetchSuggestions(value));
+        } else {
+            dispatch(fetchSuggestions('')); // Clear suggestions if search term is empty
         }
     };
 
-    const handleInputChange = (e) => {
-        const value = e.target.value;
-        setTitle(value);
-        if (value.length > 1) { // Fetch suggestions for queries longer than 1 character
-            dispatch(fetchSuggestions(value));
-        } else {
-            dispatch({ type: 'FETCH_SUGGESTIONS_SUCCESS', payload: [] }); // Clear suggestions
+    const handleAddMovie = () => {
+        if (searchTerm) {
+            dispatch(fetchMovie(searchTerm)); // Fetch movie details
+            setSearchTerm(''); // Clear search term
         }
     };
 
@@ -31,15 +34,21 @@ const MovieSearch = () => {
                 <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter movie title"
-                    value={title}
-                    onChange={handleInputChange}
+                    placeholder="Search for a movie"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
                 />
                 <div className="input-group-append">
-                    <button className="btn btn-primary" onClick={handleSearch}>Search</button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={handleAddMovie}
+                    >
+                        Search
+                    </button>
                 </div>
             </div>
-            {title.length > 1 && <SuggestionList suggestions={suggestions} />}
+            {error && <div className="alert alert-danger mt-3">{error}</div>}
+            {searchTerm.length > 0 && <SuggestionList suggestions={suggestions} />}
         </div>
     );
 };

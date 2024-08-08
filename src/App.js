@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import MovieSearch from './components/MovieSearch';
 import MovieList from './components/MovieList';
 import ShareButton from './components/ShareButton';
+import MovieDetails from './components/MovieDetails';
 
 const App = () => {
     const movies = useSelector(state => state.movies);
@@ -15,6 +16,7 @@ const App = () => {
             </header>
             <MovieSearch />
             <MovieList />
+            <MovieDetails />
             <ShareButton list={movies} />
         </div>
     );
