@@ -83,6 +83,14 @@ movie-card {
   color: #007bff; 
 }
 
+.details p {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.details strong {
+  color: #333; /* Dark color for better readability */
+}
 
 @keyframes App-logo-spin {
   from {

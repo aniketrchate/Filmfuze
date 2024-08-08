@@ -21,6 +21,7 @@ const App = () => {
                 <MovieSearch />
                 <Routes>
                     <Route path="/" element={<MovieList />} />
+                    <Route path="/search" component={MovieSearch} />
                     <Route path="/movie/:id" element={<MovieDetails />} />
                 </Routes>
                 <ShareButton list={movies} />
