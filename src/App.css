@@ -28,20 +28,50 @@
   color: #61dafb;
 }
 
-
-.card-img {
-  max-width: 100%;
-  height: auto;
+movie-card {
+  height: 400px; /* Fixed height for the card */
+  width: 100%; /* Full width */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px; /* Space between cards */
 }
 
-.btn-success {
-  background-color: #28a745;
-  border-color: #28a745;
+.movie-img {
+  width: 100%; /* Ensures the image takes the full width of the card */
+  height: 250px; /* Fixed height for the image, adjust as needed */
+  object-fit: contain; /* Ensures the image is fully visible without distortion */
+}
+
+.card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn-info {
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+.btn-info:hover {
+  background-color: #138496;
+  border-color: #117a8b;
 }
 
 .btn-danger {
   background-color: #dc3545;
   border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
 }
 
 .list-group-item {
