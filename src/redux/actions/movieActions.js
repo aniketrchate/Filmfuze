@@ -34,7 +34,7 @@ export const fetchSuggestions = (query) => async (dispatch) => {
         const response = await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
         dispatch({
             type: FETCH_SUGGESTIONS_SUCCESS,
-            payload: response.data.Search
+            payload: response.data.Search || []  // Ensure response.data.Search is used
         });
     } catch (error) {
         dispatch({

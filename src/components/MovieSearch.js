@@ -6,10 +6,12 @@ import { fetchSuggestions, addMovie } from '../redux/actions/movieActions';
 const MovieSearch = () => {
     const [query, setQuery] = useState('');
     const dispatch = useDispatch();
-    const suggestions = useSelector(state => state.suggestions);
+    const suggestions = useSelector(state => state.suggestions); // Correctly access the suggestions
 
     const handleSearch = () => {
-        dispatch(fetchSuggestions(query));
+        if (query.trim()) {
+            dispatch(fetchSuggestions(query));
+        }
     };
 
     const handleAddMovie = (movie) => {
@@ -30,7 +32,7 @@ const MovieSearch = () => {
                 />
                 <button className="btn btn-primary mt-2" onClick={handleSearch}>Search</button>
             </div>
-            {suggestions.length > 0 && (
+            {suggestions && suggestions.length > 0 && (
                 <ul className="list-group">
                     {suggestions.map(movie => (
                         <li key={movie.imdbID} className="list-group-item d-flex justify-content-between align-items-center">

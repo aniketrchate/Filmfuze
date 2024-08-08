@@ -4,7 +4,7 @@ import { ADD_MOVIE, REMOVE_MOVIE, FETCH_MOVIE_SUCCESS, FETCH_MOVIE_FAILURE, FETC
 const initialState = {
     movies: JSON.parse(localStorage.getItem('movies')) || [],
     error: null,
-    suggestions: []
+    suggestions: []  // Ensure this is initialized as an empty array
 };
 
 const movieReducer = (state = initialState, action) => {
