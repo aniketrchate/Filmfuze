@@ -1,6 +1,6 @@
 // src/redux/store.js
 import { createStore, applyMiddleware } from 'redux';
-import { thunk } from 'redux-thunk'; // Named import
+import { thunk } from 'redux-thunk'; 
 import movieReducer from './reducers/movieReducer';
 
 // Create the Redux store with thunk middleware

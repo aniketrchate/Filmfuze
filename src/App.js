@@ -4,8 +4,8 @@ import MovieSearch from './components/MovieSearch';
 import MovieList from './components/MovieList';
 import MovieDetails from './components/MovieDetails';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
-import './App.css'; // Import your custom CSS
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import './App.css'; 
 
 const App = () => {
 

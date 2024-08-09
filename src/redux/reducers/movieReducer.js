@@ -8,7 +8,7 @@ import {
     SELECT_MOVIE 
 } from '../types';
 
-// Load movies from local storage or initialize with an empty array if none exist
+
 const loadMoviesFromLocalStorage = () => {
     try {
         const savedMovies = localStorage.getItem('movies');
