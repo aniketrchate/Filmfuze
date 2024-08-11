@@ -1,0 +1,206 @@
+/*movieList*/
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.btn-primary {
+    background-color: #fa4659;
+    border: 1px solid #fa4659;
+    color: #feffe4;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2eb872;
+    border-color: #2eb872;
+    color: #feffe4;
+}
+
+.movie-card {
+    background-color: rgba(33,37,41,1);
+    color: #feffe4;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.movie-img {
+    width: 100%;
+    height: auto;
+    border-bottom: 4px solid #a3de83;
+}
+
+.card-body {
+    padding: 1rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-body h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.btn-sm {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+
+.btn-danger {
+    background-color: #fa4659;
+    border: 1px solid #fa4659;
+    color: #feffe4;
+}
+
+.btn-danger:hover {
+    background-color: #2eb872;
+    border-color: #2eb872;
+    color: #feffe4;
+}
+
+.btn-info {
+    background-color: #2eb872;
+    border: 1px solid #2eb872;
+    color: #feffe4;
+}
+
+.btn-info:hover {
+    background-color: #fa4659;
+    border-color: #fa4659;
+    color: #feffe4;
+}
+
+@media (max-width: 768px) {
+    .movie-card {
+        margin-bottom: 1rem;
+    }
+
+    .btn-sm {
+        margin-right: 0.5rem;
+    }
+}
+
+
+
+/*movieDetails*/
+/* Movie details card */
+.movie-details-card {
+    background-color: #a3de83; /* Third Color */
+    color: #2eb872; /* First Color */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 1.5rem;
+    border: 2px solid #2eb872; /* First Color */
+}
+
+.movie-poster {
+    border-bottom: 4px solid #2eb872; /* First Color */
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.movie-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #feffe4; /* Second Color */
+}
+
+.movie-info {
+    font-size: 1.2rem;
+    color: #feffe4; /* Second Color */
+}
+
+.plot-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #feffe4; /* Second Color */
+}
+
+.movie-plot {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #feffe4; /* Second Color */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+    .movie-title {
+        font-size: 2rem;
+    }
+
+    .movie-info {
+        font-size: 1rem;
+    }
+
+    .movie-rating {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .back-button {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .movie-title {
+        font-size: 1.5rem;
+    }
+
+    .movie-info {
+        font-size: 0.9rem;
+    }
+
+    .movie-rating {
+        font-size: 1rem;
+    }
+}
+
+/* Back button */
+.back-button {
+    border: 1px solid #2eb872; /* Fourth Color */
+    background-color: #201d3a; /* Deep purple */
+    color: #feffe4; /* Second Color */
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.4rem;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: #2eb872; /* Fourth Color */
+    color: #201d3a; /* Deep purple */
+    border-color: #201d3a; /* Deep purple */
+}
+
+.back-button i {
+    margin-right: 0.5rem;
+}

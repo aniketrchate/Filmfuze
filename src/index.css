@@ -1,13 +1,126 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* MovieDetails.css */
+
+.movie-details-container {
+    margin-top: 1rem;
+    position: relative;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.back-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.hero-section {
+    position: relative;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content {
+    z-index: 10;
+}
+
+.movie-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.movie-info {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.movie-rating {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.watch-trailer-btn {
+    background-color: #e50914;
+    border-color: #e50914;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.5rem;
+}
+
+.watch-trailer-btn:hover {
+    background-color: #b81d24;
+    border-color: #b81d24;
+}
+
+.movie-details-card {
+    background-color: #343a40;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-top: 2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.movie-details-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.movie-poster {
+    border-bottom: 4px solid #007bff;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.movie-info {
+    font-size: 1.2rem;
+}
+
+.plot-heading {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+.movie-plot {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.spinner-border {
+    width: 4rem;
+    height: 4rem;
+    border-width: 0.4rem;
+}
+
+.text-danger {
+    color: #dc3545;
 }

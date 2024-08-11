@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { removeMovie, selectMovie } from '../redux/actions/movieActions';
 import { Link } from 'react-router-dom';
+import '../theme.css'; // Adjust the path as necessary
+
 
 class MovieList extends Component {
     constructor(props) {
