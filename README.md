@@ -5,11 +5,11 @@
 ## 📸 Screenshots
 
 1. **Homepage**
-   ![Homepage Screenshot]() `<!-- Replace with actual screenshot link -->`
+   ![Homepage Screenshot](/src/assets/Home_Page.PNG) 
 2. **Movie List**
-   ![Movie List Screenshot]() `<!-- Replace with actual screenshot link -->`
+   ![Movie List Screenshot](/src/assets/Movie_List.PNG) 
 3. **Movie Details**
-   ![Movie Details Screenshot]() `<!-- Replace with actual screenshot link -->`
+   ![Movie Details Screenshot](/src/assets/Movie_Details.PNG) 
 
 ## 🌟 Features
 
