@@ -4,7 +4,6 @@ import { removeMovie, selectMovie } from '../redux/actions/movieActions';
 import { Link } from 'react-router-dom';
 import '../theme.css'; // Adjust the path as necessary
 
-
 class MovieList extends Component {
     constructor(props) {
         super(props);
@@ -61,34 +60,65 @@ class MovieList extends Component {
                 </button>
                 {showFilters && (
                     <div className="mb-3">
-                        <div className="btn-group" role="group" aria-label="Sort By">
+                        <div className="btn-group d-flex flex-wrap" role="group" aria-label="Sort By">
+                            {/* Text buttons for tablets and larger screens */}
                             <button
                                 type="button"
-                                className={`btn btn-outline-primary ${sortOption === 'name' && sortOrder === 'asc' ? 'active' : ''}`}
+                                className={`btn btn-outline-primary ${sortOption === 'name' && sortOrder === 'asc' ? 'active' : ''} d-none d-sm-block`}
                                 onClick={() => this.handleSortChange('name', 'asc')}
                             >
                                 Name (A-Z)
                             </button>
                             <button
                                 type="button"
-                                className={`btn btn-outline-primary ${sortOption === 'name' && sortOrder === 'desc' ? 'active' : ''}`}
+                                className={`btn btn-outline-primary ${sortOption === 'name' && sortOrder === 'desc' ? 'active' : ''} d-none d-sm-block`}
                                 onClick={() => this.handleSortChange('name', 'desc')}
                             >
                                 Name (Z-A)
                             </button>
                             <button
                                 type="button"
-                                className={`btn btn-outline-primary ${sortOption === 'date' && sortOrder === 'asc' ? 'active' : ''}`}
+                                className={`btn btn-outline-primary ${sortOption === 'date' && sortOrder === 'asc' ? 'active' : ''} d-none d-sm-block`}
                                 onClick={() => this.handleSortChange('date', 'asc')}
                             >
                                 Date Added (Oldest First)
                             </button>
                             <button
                                 type="button"
-                                className={`btn btn-outline-primary ${sortOption === 'date' && sortOrder === 'desc' ? 'active' : ''}`}
+                                className={`btn btn-outline-primary ${sortOption === 'date' && sortOrder === 'desc' ? 'active' : ''} d-none d-sm-block`}
                                 onClick={() => this.handleSortChange('date', 'desc')}
                             >
                                 Date Added (Newest First)
+                            </button>
+
+                            {/* Icon buttons for mobile screens */}
+                            <button
+                                type="button"
+                                className={`btn btn-outline-primary ${sortOption === 'name' && sortOrder === 'asc' ? 'active' : ''} d-sm-none`}
+                                onClick={() => this.handleSortChange('name', 'asc')}
+                            >
+                                <i className="bi bi-sort-alpha-down"></i>
+                            </button>
+                            <button
+                                type="button"
+                                className={`btn btn-outline-primary ${sortOption === 'name' && sortOrder === 'desc' ? 'active' : ''} d-sm-none`}
+                                onClick={() => this.handleSortChange('name', 'desc')}
+                            >
+                                <i className="bi bi-sort-alpha-up"></i>
+                            </button>
+                            <button
+                                type="button"
+                                className={`btn btn-outline-primary ${sortOption === 'date' && sortOrder === 'asc' ? 'active' : ''} d-sm-none`}
+                                onClick={() => this.handleSortChange('date', 'asc')}
+                            >
+                                <i className="bi bi-sort-numeric-down"></i>
+                            </button>
+                            <button
+                                type="button"
+                                className={`btn btn-outline-primary ${sortOption === 'date' && sortOrder === 'desc' ? 'active' : ''} d-sm-none`}
+                                onClick={() => this.handleSortChange('date', 'desc')}
+                            >
+                                <i className="bi bi-sort-numeric-up"></i>
                             </button>
                         </div>
                     </div>
@@ -96,7 +126,7 @@ class MovieList extends Component {
                 <div className="row">
                     {sortedMovies.length > 0 ? (
                         sortedMovies.map(movie => (
-                            <div key={movie.imdbID} className="col-md-3 mb-4">
+                            <div key={movie.imdbID} className="col-6 col-sm-6 col-md-4 col-lg-3 mb-4">
                                 <div className="movie-card">
                                     <img src={movie.Poster} alt={movie.Title} className="movie-img" />
                                     <div className="card-body">
