@@ -1,14 +1,13 @@
 {
-  "name": "movie-organizer",
-  "version": "0.1.0",
+  "name": "Filmfuze",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "axios": "^1.7.3",
     "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
-    "movie-organizer": "file:",
+    "Filmfuze": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",

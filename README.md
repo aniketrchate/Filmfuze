@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# 🎥 Filmfuze
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Filmfuze** is a movie management application that lets you search for movies, manage your personal movie list, and view detailed information about each film. Built with modern web technologies, Filmfuze is designed to help movie enthusiasts keep track of their favorite films with ease.
 
-## Available Scripts
+## 📸 Screenshots
 
-In the project directory, you can run:
+1. **Homepage**
+   ![Homepage Screenshot]() `<!-- Replace with actual screenshot link -->`
+2. **Movie List**
+   ![Movie List Screenshot]() `<!-- Replace with actual screenshot link -->`
+3. **Movie Details**
+   ![Movie Details Screenshot]() `<!-- Replace with actual screenshot link -->`
 
-### `npm start`
+## 🌟 Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🔍 **Search Movies**: Find movies by title and view suggestions in real-time.
+- 🗂️ **Manage Your List**: Easily add and remove movies from your personal collection.
+- 📜 **Detailed View**: Dive into detailed information about each movie, including plot, ratings, and cast.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Technologies Used
 
-### `npm test`
+- ⚛️ **React** : For building a dynamic and responsive user interface.
+- 🔄 **Redux** : To manage and centralize application state.
+- 💅 **Bootstrap** : For a responsive and modern design.
+- 🛣️ **React Router** : To handle routing and navigation between different views.
+- 🔧 **Redux Thunk** : For managing asynchronous actions.
+- 🎬 **OMDB API** : Provides movie data for search and detailed information.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Installation
 
-### `npm run build`
+Follow these steps to get Filmfuze up and running on your local machine:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the Repository**:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```sh
+   git clone https://github.com/aniketrchate/Filmfuze.git
+   ```
+2. **Navigate into the Project Directory**:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```sh
+   cd Filmfuze
+   ```
+3. **Install Dependencies**:
 
-### `npm run eject`
+   Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed. Then run:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   ```sh
+   npm install
+   ```
+4. **Configure the OMDB API Key**:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   The application uses the OMDB API to fetch movie data. You need to provide your own API key in src/redux/actions/movieActions.js :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   ```plaintext
+   const API_KEY = 'your_omdb_api_key_here';
+   ```
+5. **Start the Development Server**:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   ```sh
+   npm start
+   ```
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
