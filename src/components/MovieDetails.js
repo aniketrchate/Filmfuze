@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchMovie } from '../redux/actions/movieActions';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap is included
-import '../theme.css'; // Import the external CSS file
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import '../theme.css'; 
 
 const MovieDetails = () => {
     const { id } = useParams();
@@ -54,7 +54,7 @@ const MovieDetails = () => {
     return (
         <div className="container mt-4">
             <button className="btn btn-outline-light back-button" onClick={handleBack}>
-                <i className="bi bi-arrow-left-circle me-2"></i> Back
+            <i class="bi bi-arrow-down-left-square-fill"></i> Back
             </button>
             <div className="movie-details-card bg-dark text-white rounded-4 shadow-lg">
                 <div className="row g-0">
@@ -67,8 +67,7 @@ const MovieDetails = () => {
                     </div>
                     <div className="col-md-8 p-4">
                         <h2 className="movie-title mb-3">
-                            {selectedMovie.Title} 
-                            <span className="text-muted"> ({selectedMovie.Year})</span>
+                            {selectedMovie.Title} ({selectedMovie.Year})
                         </h2>
                         <p className="movie-info mb-2">
                             <strong className="text-primary">Genre:</strong> {selectedMovie.Genre}
@@ -80,7 +79,7 @@ const MovieDetails = () => {
                             <strong className="text-primary">Actors:</strong> {selectedMovie.Actors}
                         </p>
                         <p className="movie-info mb-2">
-                            <strong className="text-primary">Rating:</strong> {selectedMovie.imdbRating}
+                            <strong className="text-primary">Rating:</strong> {selectedMovie.imdbRating} <i class="bi bi-star"/>
                         </p>
                         <div className="mt-3">
                             <h5 className="plot-heading mb-2">Plot</h5>

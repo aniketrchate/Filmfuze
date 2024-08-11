@@ -45,7 +45,7 @@ const MovieSearch = () => {
                                     className="btn btn-primary btn-sm"
                                     onClick={() => handleAddMovie(movie)}
                                 >
-                                    Add to List
+                                    <i class="bi bi-plus-circle"></i>
                                 </button>
                             </div>
                         </li>

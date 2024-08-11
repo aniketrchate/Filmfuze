@@ -13,7 +13,7 @@ const AppHeader = () => {
     
     return !isMovieDetailsPage ? (
         <header className="bg-primary text-white text-center py-3">
-            <h1>Movie Organizer</h1>
+           <h1><i class="bi bi-film"></i> Filmfuze</h1>
         </header>
     ) : null;
 };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { removeMovie, selectMovie } from '../redux/actions/movieActions';
 import { Link } from 'react-router-dom';
-import '../theme.css'; // Adjust the path as necessary
+import '../theme.css'; 
 
 class MovieList extends Component {
     constructor(props) {
@@ -55,7 +55,7 @@ class MovieList extends Component {
         return (
             <div className="container mt-4">
                 <h2 className="mb-4">My Movie List</h2>
-                <button className="btn btn-primary mb-3" onClick={this.toggleFilters}>
+                <button className="btn btn-primary mb-3 " onClick={this.toggleFilters}>
                     {showFilters ? 'Hide Filters' : 'Show Filters'}
                 </button>
                 {showFilters && (
@@ -133,7 +133,7 @@ class MovieList extends Component {
                                         <h5>{movie.Title} ({movie.Year})</h5>
                                         <div className="d-flex justify-content-between">
                                             <button className="btn btn-danger btn-sm" onClick={() => this.handleRemoveMovie(movie.imdbID)}>
-                                                Remove
+                                            <i class="bi bi-trash3"></i>
                                             </button>
                                             <Link to={`/movie/${movie.imdbID}`} className="btn btn-info btn-sm" onClick={() => this.handleSelectMovie(movie)}>
                                                 View
